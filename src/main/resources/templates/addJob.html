@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Add Job</title>
+</head>
+<body>
+<nav role="navigation">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/items">Jobs</a></li>
+    </ul>
+</nav>
+
+<form th:action="@{/jobs}" th:object="${jobForm}" th:method="post">
+    <table>
+        <tr>
+            <td>Job Title:</td>
+            <td><input type="text"  th:field="*{jobTitle}" /></td>
+            <td th:if="${#fields.hasErrors('jobTitle')}" th:errors="*{jobTitle}">Item Type Error will appear here</td>
+        </tr>
+        <tr>
+            <td>Job Description:</td>
+            <td><textarea th:rows="4" th:cols="50" th:field="*{description}" /></td>
+            <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Item Type Error will appear here</td>
+        </tr>
+        <tr>
+            <td>Number People of Hire:</td>
+            <td><input type="text" th:field="*{numbHirePeople}" /></td>
+            <td th:if="${#fields.hasErrors('numbHirePeople')}" th:errors="*{numbHirePeople}">Amount Error will appear here</td>
+        </tr>
+        <tr>
+            <td>Last Application Date:</td>
+            <td><input type="text" th:field="*{lastAppDate}" /></td>
+            <td th:if="${#fields.hasErrors('lastAppDate')}" th:errors="*{lastAppDate}">Item Type Error will appear here</td>
+        </tr>
+        <tr>
+            <td><button type="submit">Add</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
