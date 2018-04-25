@@ -23,4 +23,14 @@ public class JobServiceImpl implements JobService {
         jobRepository.save(job);
         System.out.println(jobRepository.findOne(job.getId()));
     }
+
+    @Override
+    public Iterable<Job> getJobs() {
+        return jobRepository.findAll();
+    }
+
+    @Override
+    public void deleteJobById(long id) {
+        jobRepository.delete(id);
+    }
 }

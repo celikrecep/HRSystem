@@ -8,7 +8,7 @@
 <nav role="navigation">
     <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/items">Jobs</a></li>
+        <li><a href="/jobs">Jobs</a></li>
     </ul>
 </nav>
 
@@ -17,22 +17,22 @@
         <tr>
             <td>Job Title:</td>
             <td><input type="text"  th:field="*{jobTitle}" /></td>
-            <td th:if="${#fields.hasErrors('jobTitle')}" th:errors="*{jobTitle}">Item Type Error will appear here</td>
+            <td th:if="${#fields.hasErrors('jobTitle')}" th:errors="*{jobTitle}">Job Title Error </td>
         </tr>
         <tr>
             <td>Job Description:</td>
             <td><textarea th:rows="4" th:cols="50" th:field="*{description}" /></td>
-            <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Item Type Error will appear here</td>
+            <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Job Description Error </td>
         </tr>
         <tr>
             <td>Number People of Hire:</td>
             <td><input type="text" th:field="*{numbHirePeople}" /></td>
-            <td th:if="${#fields.hasErrors('numbHirePeople')}" th:errors="*{numbHirePeople}">Amount Error will appear here</td>
+            <td th:if="${#fields.hasErrors('numbHirePeople')}" th:errors="*{numbHirePeople}">Number of People to Hire Error w</td>
         </tr>
         <tr>
             <td>Last Application Date:</td>
             <td><input type="text" th:field="*{lastAppDate}" /></td>
-            <td th:if="${#fields.hasErrors('lastAppDate')}" th:errors="*{lastAppDate}">Item Type Error will appear here</td>
+            <td th:if="${#fields.hasErrors('lastAppDate')}" th:errors="*{lastAppDate}">Last Application Date Error </td>
         </tr>
         <tr>
             <td><button type="submit">Add</button></td>
