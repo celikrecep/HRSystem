@@ -32,6 +32,9 @@ public class Job {
     @Column(name = "appDate", nullable = false)
     private String lastAppDate;
 
+    @OneToMany(mappedBy = "job")
+    private Set<App> apps;
+
 
     public Job(){
 
@@ -81,6 +84,14 @@ public class Job {
 
     public void setLastAppDate(String lastAppDate) {
         this.lastAppDate = lastAppDate;
+    }
+
+    public Set<App> getApps() {
+        return apps;
+    }
+
+    public void setApps(Set<App> apps) {
+        this.apps = apps;
     }
 
     @Override

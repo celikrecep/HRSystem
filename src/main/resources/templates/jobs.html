@@ -30,7 +30,7 @@
         <td th:text="${job.numbHirePeople}">Number of people to hire </td>
         <td th:text="${job.lastAppDate}">Last application date </td>
         <td>
-            <form th:action="@{/jobs/}+${job.id}">
+            <form th:action="@{/jobs/}+${job.id}+@{/app}">
                 <button type="submit">Apply</button>
             </form>
         </td>

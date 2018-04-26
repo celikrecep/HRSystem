@@ -12,5 +12,4 @@ public interface JobService {
     Iterable<Job> getJobs();
     void deleteJobById(long id);
     Job getJobDetailsById(long id);
-
 }

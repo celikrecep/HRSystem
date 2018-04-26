@@ -38,7 +38,9 @@ public class App {
     @Column(name = "thoughtsJob", nullable = false)
     private String thoughtsOnJob;
 
-
+    @ManyToOne
+    @JoinColumn(name = "job_id")
+    private Job job;
 
     public App() {
 
@@ -96,7 +98,13 @@ public class App {
         this.thoughtsOnJob = thoughtsOnJob;
     }
 
+    public Job getJob() {
+        return job;
+    }
 
+    public void setJob(Job job) {
+        this.job = job;
+    }
 
     @Override
     public String toString() {

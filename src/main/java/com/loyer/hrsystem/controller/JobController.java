@@ -62,16 +62,6 @@ public class JobController {
         return "redirect:/jobs/";
     }
 
-   //addApp viewına birden fazla model göndermek için map kullandık.
-    //parametre olarakta id alıp ilgili job nesnesinin detaylarını çekicez.
-   @RequestMapping("/jobs/{id}")
-    public ModelAndView getDetails(@PathVariable Long id, ModelMap map){
-
-       map.addAttribute("jobs", jobService.getJobDetailsById(id));
-       map.addAttribute("appForm", new AppAddForm());
-        return new ModelAndView("addApp", map);
-   }
-
 
 
 
