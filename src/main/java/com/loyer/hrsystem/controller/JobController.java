@@ -1,9 +1,12 @@
 package com.loyer.hrsystem.controller;
 
+import com.loyer.hrsystem.model.AppAddForm;
+import com.loyer.hrsystem.model.Job;
 import com.loyer.hrsystem.model.JobAddForm;
 import com.loyer.hrsystem.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class JobController {
@@ -23,11 +28,15 @@ public class JobController {
         this.jobService = jobService;
     }
 
+    //addJob sayfasında kullanacağımız modelimizin ismi jobFrom
+    //JobAddForm() burda kullanacağımız modelin kendisi.
     @RequestMapping("/jobs/add")
     public ModelAndView jobAddPage(){
         return new ModelAndView("addJob", "jobForm", new JobAddForm());
     }
 
+    //from validation için @Valid anotasyonunu ve BindingResult parametresini kullanıyoruz
+    //herhangi bir sıkıntı yoksa nesnemizi kaydediyoruz.
     @RequestMapping(value = "/jobs", method = RequestMethod.POST)
     public String handleJobAdd(@Valid @ModelAttribute("jobForm") JobAddForm form, BindingResult bindingResult){
         if(bindingResult.hasErrors())
@@ -37,15 +46,33 @@ public class JobController {
         return "redirect:/jobs/";
     }
 
+    //tüm job nesnelerinin görüntüleneceği sayfaya yönlendiriyoruz
+    //view olarak jobs model olarakta htmlde kullanacağımız ismi veriyoruz
+    //jobService.getJobs() burada kullanacağımız model
     @RequestMapping("/jobs/")
     public ModelAndView getJobsPage() {
         return new ModelAndView("jobs", "jobs", jobService.getJobs());
     }
 
+    //ilgili idye sahip job nesnesini siliyoruz
     @RequestMapping(value = "/jobs/{id}", method = RequestMethod.DELETE)
     public String handleJobDelete(@PathVariable Long id) {
 
         jobService.deleteJobById(id);
-        return "redirect:/jobs";
+        return "redirect:/jobs/";
     }
+
+   //addApp viewına birden fazla model göndermek için map kullandık.
+    //parametre olarakta id alıp ilgili job nesnesinin detaylarını çekicez.
+   @RequestMapping("/jobs/{id}")
+    public ModelAndView getDetails(@PathVariable Long id, ModelMap map){
+
+       map.addAttribute("jobs", jobService.getJobDetailsById(id));
+       map.addAttribute("appForm", new AppAddForm());
+        return new ModelAndView("addApp", map);
+   }
+
+
+
+
 }

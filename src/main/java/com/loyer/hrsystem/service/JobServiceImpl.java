@@ -1,10 +1,13 @@
 package com.loyer.hrsystem.service;
 
+import com.loyer.hrsystem.model.App;
 import com.loyer.hrsystem.model.Job;
 import com.loyer.hrsystem.model.JobAddForm;
 import com.loyer.hrsystem.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.*;
 
 @Service
 public class JobServiceImpl implements JobService {
@@ -24,13 +27,25 @@ public class JobServiceImpl implements JobService {
         System.out.println(jobRepository.findOne(job.getId()));
     }
 
+    //tüm job nesnelerini çekiyoruz.
     @Override
     public Iterable<Job> getJobs() {
         return jobRepository.findAll();
     }
 
+    //idye göre repositroyden job siliyoruz.
     @Override
     public void deleteJobById(long id) {
         jobRepository.delete(id);
     }
+
+    //job detaylarını çekiyoruz
+    @Override
+    public Job getJobDetailsById(long id) {
+        Job job = jobRepository.findOne(id);
+        System.out.println(job);
+        return job;
+    }
+
+
 }

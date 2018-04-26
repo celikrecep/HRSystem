@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Jop Application</title>
+</head>
+<body>
+<nav role="navigation">
+    <ul>
+        <li><a href="/">Home</a></li>
+    </ul>
+</nav>
+<table>
+    <tr>
+        <th></th>
+        <th>Job Title</th>
+        <th>Job Description</th>
+        <th>Number of People to Hire</th>
+        <th>Last Application Date</th>
+    </tr>
+    <tr th:each="job : ${jobs}">
+        <td>
+
+        </td>
+        <td th:text="${job.title}">Job title </td>
+        <td th:text="${job.description}">Job description </td>
+        <td th:text="${job.numbHirePeople}">Number of people to hire </td>
+        <td th:text="${job.lastAppDate}">Last application date </td>
+        <td>
+
+        </td>
+    </tr>
+</table>
+<form th:action="@{/apps}" th:object="${appForm}" th:method="post">
+    <table>
+
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}" /></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Item Type Error will appear here</td>
+        </tr>
+        <tr>
+            <td>e-Mail:</td>
+            <td><input type="text" th:field="*{eMail}" /></td>
+            <td th:if="${#fields.hasErrors('eMail')}" th:errors="*{eMail}">Amount Error will appear here</td>
+        </tr>
+        <tr>
+            <td>Phone Number:</td>
+            <td><input type="text" th:field="*{phoneNumber}" /></td>
+            <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Amount Error will appear here</td>
+        </tr>
+        <tr>
+        <tr>
+            <td>Address:</td>
+            <td><textarea th:rows="4" th:cols="50" th:field="*{address}" /></td>
+            <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Amount Error will appear here</td>
+        </tr>
+        <tr>
+            <td>Thoughts on Job:</td>
+            <td><textarea th:rows="4" th:cols="50"  th:field="*{thoughtsJob}" /></td>
+            <td th:if="${#fields.hasErrors('thoughtsJob')}" th:errors="*{thoughtsJob}">Amount Error will appear here</td>
+        </tr>
+            <td><button type="submit">Send</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity
 public class Job {
@@ -42,6 +43,8 @@ public class Job {
         this.lastAppDate = lastAppDate;
 
     }
+
+
 
     public long getId() {
         return id;
@@ -82,7 +85,7 @@ public class Job {
 
     @Override
     public String toString() {
-        return "Item{" +
+        return "Job{" +
                 "id=" + id +
                 ", Title='" + title + '\'' +
                 ", desc='" + description + '\'' +
