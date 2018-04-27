@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Items</title>
+</head>
+<body>
+<nav role="navigation">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/items/add">Add item</a></li>
+    </ul>
+</nav>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>e-Mail</th>
+        <th>Phone Number</th>
+        <th>Address</th>
+        <th>Thoughts on Job</th>
+        <th>Job title</th>
+    </tr>
+    <tr th:each="app : ${apps}">
+
+        <td th:text="${app.name}">name</td>
+        <td th:text="${app.eMail}">email</td>
+        <td th:text="${app.phoneNumber}">phone number</td>
+        <td th:text="${app.address}">address</td>
+        <td th:text="${app.thoughtsOnJob}">thoughts on job</td>
+        <td th:text="${app.job.getTitle()}">job title</td>
+    </tr>
+</table>
+</body>
+</html>

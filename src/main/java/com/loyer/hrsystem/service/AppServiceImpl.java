@@ -19,7 +19,6 @@ public class AppServiceImpl implements AppService {
     private final AppRepository appRepository;
     private final JobRepository jobRepository;
     private App tempApp;
-    private Set<App> gg;
     @Autowired
     public AppServiceImpl(AppRepository appRepository, JobRepository jobRepository) {
         this.appRepository = appRepository;
@@ -36,11 +35,7 @@ public class AppServiceImpl implements AppService {
 
     }
 
-    @Override
-    public App getAppById(long id) {
-        return appRepository.findOne(id);
-    }
-
+    //ilgili iş ilanına başvuru yapılması için kullanıcaz
     @Override
     public App applyApp(long jobId, AppAddForm form) {
         Job job = jobRepository.findOne(jobId);
@@ -62,4 +57,8 @@ public class AppServiceImpl implements AppService {
         return appRepository.save(app);
     }
 
+    @Override
+    public Iterable<App> getApps() {
+        return appRepository.findAll();
+    }
 }

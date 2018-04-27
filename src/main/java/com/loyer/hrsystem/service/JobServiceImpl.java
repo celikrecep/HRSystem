@@ -52,6 +52,7 @@ public class JobServiceImpl implements JobService {
         return jobRepository.findOne(id);
     }
 
+    //idye göre iş ilanına olan başvuruları listeliyoruz.
     @Override
     public Map<String, List<App>> getAppsById(long jobId) {
         Map<String, List<App>> map = new HashMap<>();

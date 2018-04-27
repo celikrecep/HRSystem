@@ -62,6 +62,11 @@ public class AppController {
         return job;
     }
 
+        @RequestMapping("/allapps")
+    public ModelAndView getAllAppsPage(){
+        return new ModelAndView("apps","apps",appService.getApps());
+        }
+
 
 
 }

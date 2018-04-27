@@ -37,28 +37,28 @@
         <tr>
             <td>Name:</td>
             <td><input type="text" th:field="*{name}" /></td>
-            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Item Type Error will appear here</td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Item Type Error </td>
         </tr>
         <tr>
             <td>e-Mail:</td>
             <td><input type="text" th:field="*{eMail}" /></td>
-            <td th:if="${#fields.hasErrors('eMail')}" th:errors="*{eMail}">Amount Error will appear here</td>
+            <td th:if="${#fields.hasErrors('eMail')}" th:errors="*{eMail}">Email Error </td>
         </tr>
         <tr>
             <td>Phone Number:</td>
             <td><input type="text" th:field="*{phoneNumber}" /></td>
-            <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Amount Error will appear here</td>
+            <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Phone Number Error </td>
         </tr>
         <tr>
         <tr>
             <td>Address:</td>
             <td><textarea th:rows="4" th:cols="50" th:field="*{address}" /></td>
-            <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Amount Error will appear here</td>
+            <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error </td>
         </tr>
         <tr>
             <td>Thoughts on Job:</td>
             <td><textarea th:rows="4" th:cols="50"  th:field="*{thoughtsJob}" /></td>
-            <td th:if="${#fields.hasErrors('thoughtsJob')}" th:errors="*{thoughtsJob}">Amount Error will appear here</td>
+            <td th:if="${#fields.hasErrors('thoughtsJob')}" th:errors="*{thoughtsJob}">Thoughts on Job Error </td>
         </tr>
             <td><button type="submit">Send</button></td>
         </tr>

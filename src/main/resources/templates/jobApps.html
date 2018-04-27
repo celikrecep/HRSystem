@@ -23,11 +23,11 @@
 
         </tr>
         <tr th:each="app : ${appList}">
-            <td th:text="${app.name}">Item code</td>
-            <td th:text="${app.eMail}">Item type</td>
-            <td th:text="${app.phoneNumber}">Item type</td>
-            <td th:text="${app.address}">Item type</td>
-            <td th:text="${app.thoughtsOnJob}">Item type</td>
+            <td th:text="${app.name}">name</td>
+            <td th:text="${app.eMail}">email</td>
+            <td th:text="${app.phoneNumber}">phone number</td>
+            <td th:text="${app.address}">address</td>
+            <td th:text="${app.thoughtsOnJob}">thoughts on job</td>
         </tr>
     </table>
 </div>
