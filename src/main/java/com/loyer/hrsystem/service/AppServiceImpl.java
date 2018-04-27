@@ -19,6 +19,7 @@ public class AppServiceImpl implements AppService {
     private final AppRepository appRepository;
     private final JobRepository jobRepository;
     private App tempApp;
+    private Set<App> gg;
     @Autowired
     public AppServiceImpl(AppRepository appRepository, JobRepository jobRepository) {
         this.appRepository = appRepository;
@@ -47,7 +48,6 @@ public class AppServiceImpl implements AppService {
 
         Set<App> appList = job.getApps();
         appList.add(app);
-
         job.setApps(appList);
 
         app.setJob(job);
@@ -61,4 +61,5 @@ public class AppServiceImpl implements AppService {
         }
         return appRepository.save(app);
     }
+
 }

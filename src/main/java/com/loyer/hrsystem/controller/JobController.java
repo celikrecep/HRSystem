@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 @Controller
 public class JobController {
@@ -62,7 +63,13 @@ public class JobController {
         return "redirect:/jobs/";
     }
 
-
+   @RequestMapping(value = "/jobs/{id}/getApps")
+    public ModelAndView getJobOfApp(@PathVariable Long id){
+        if(null == jobService.getJobById(id))
+            throw new NoSuchElementException("Job with id:" + id + " not found");
+        else
+            return new ModelAndView("jobApps","jobs",jobService.getAppsById(id));
+   }
 
 
 }

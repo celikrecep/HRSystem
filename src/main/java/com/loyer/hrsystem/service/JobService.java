@@ -12,4 +12,6 @@ public interface JobService {
     Iterable<Job> getJobs();
     void deleteJobById(long id);
     Job getJobDetailsById(long id);
+    Job getJobById(long id);
+    Map<String, List<App>> getAppsById(long jobId);
 }

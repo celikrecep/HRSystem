@@ -34,6 +34,11 @@
                 <button type="submit">Apply</button>
             </form>
         </td>
+        <td>
+            <form th:action="@{/jobs/}+${job.id}+@{/getApps}">
+                <button type="submit">getir</button>
+            </form>
+        </td>
     </tr>
 </table>
 </body>

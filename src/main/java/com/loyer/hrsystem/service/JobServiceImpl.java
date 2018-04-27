@@ -47,4 +47,25 @@ public class JobServiceImpl implements JobService {
         return job;
     }
 
+    @Override
+    public Job getJobById(long id) {
+        return jobRepository.findOne(id);
+    }
+
+    @Override
+    public Map<String, List<App>> getAppsById(long jobId) {
+        Map<String, List<App>> map = new HashMap<>();
+        Set<App> apps = getJobById(jobId).getApps();
+
+        for(App app: apps) {
+            List<App> appList = new ArrayList<>();
+            String key = ""+ app.getId();
+            if(map.containsKey(key))
+                appList = map.get(key);
+
+            appList.add(app);
+            map.put(key,appList);
+        }
+        return map;
+    }
 }
