@@ -1,6 +1,5 @@
 package com.loyer.hrsystem.controller;
 
-import com.loyer.hrsystem.model.App;
 import com.loyer.hrsystem.model.AppAddForm;
 import com.loyer.hrsystem.model.Job;
 import com.loyer.hrsystem.repository.JobRepository;
@@ -17,8 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.Set;
+
 
 @Controller
 public class AppController {
@@ -34,7 +32,7 @@ public class AppController {
         this.jobRepository = jobRepository;
     }
 
-
+    //başvuru kaydediyoruz
     @RequestMapping(value = "/apps", method = RequestMethod.POST)
     public String handleAppAdd(@Valid @ModelAttribute("appForm") AppAddForm appAddForm, BindingResult bindingResult){
         if(bindingResult.hasErrors())
@@ -44,7 +42,7 @@ public class AppController {
         appService.applyApp(job.getId(), appAddForm);
 
 
-        return "home";
+        return "redirect:/jobs/";
     }
     //addApp viewına birden fazla model göndermek için map kullandık.
     //parametre olarakta id alıp ilgili job nesnesinin detaylarını çekicez.
@@ -61,7 +59,7 @@ public class AppController {
         this.job = jobRepository.findOne(id);
         return job;
     }
-
+    //tüm başvurular
         @RequestMapping("/allapps")
     public ModelAndView getAllAppsPage(){
         return new ModelAndView("apps","apps",appService.getApps());

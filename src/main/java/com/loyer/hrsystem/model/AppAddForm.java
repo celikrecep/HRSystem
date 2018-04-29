@@ -19,8 +19,8 @@ public class AppAddForm {
     @Size(min = 5, max = 100)
     private String eMail;
 
-    @NotEmpty
-    private String phoneNumber;
+    @NotNull
+    private long phoneNumber;
 
     @NotEmpty
     private String address;
@@ -45,11 +45,11 @@ public class AppAddForm {
         this.eMail = eMail;
     }
 
-    public String getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

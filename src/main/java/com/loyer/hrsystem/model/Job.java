@@ -48,7 +48,6 @@ public class Job {
     }
 
 
-
     public long getId() {
         return id;
     }

@@ -2,16 +2,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <title>Welcome!</title>
+
 </head>
 <body>
 <nav role="navigation">
     <ul>
-        <li><a href="/">Create Job Ad</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="/jobs/">Jobs</a></li>
-
+        <div sec:authorize="isAuthenticated()">
+            <li> <a href="/allapps">All Applications</a> </li>
+        </div>
     </ul>
 </nav>
 
-<h1>Welcome!</h1>
+<div sec:authorize="isAnonymous()">
+    <h1>Welcome!</h1>
+
+</div>
+
+
+<div sec:authorize="isAnonymous()">
+    <p>Click <a th:href="@{/login}">here</a> to login.</p>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Log Out"/>
+    </form>
+</div>
 </body>
 </html>

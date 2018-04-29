@@ -1,12 +1,11 @@
 package com.loyer.hrsystem.controller;
 
-import com.loyer.hrsystem.model.AppAddForm;
-import com.loyer.hrsystem.model.Job;
+
 import com.loyer.hrsystem.model.JobAddForm;
+import com.loyer.hrsystem.repository.UserRepository;
 import com.loyer.hrsystem.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,17 +14,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.NoSuchElementException;
 
 @Controller
 public class JobController {
 
     private final JobService jobService;
+    private final UserRepository userRepository;
 
     @Autowired
-    public JobController(JobService jobService) {
+    public JobController(JobService jobService, UserRepository userRepository) {
+
+        this.userRepository = userRepository;
         this.jobService = jobService;
     }
 
@@ -62,9 +62,9 @@ public class JobController {
         jobService.deleteJobById(id);
         return "redirect:/jobs/";
     }
-
+    //idye göre iş ilanındaki tüm başvuruları getiriyoruz
    @RequestMapping(value = "/jobs/{id}/getApps")
-    public ModelAndView getJobOfApp(@PathVariable Long id){
+    public ModelAndView getJobsAppPage(@PathVariable Long id){
         if(null == jobService.getJobById(id))
             throw new NoSuchElementException("Job with id:" + id + " not found");
         else

@@ -8,37 +8,47 @@
 <nav role="navigation">
     <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/jobs/add">Add Job</a></li>
+        <div sec:authorize="isAuthenticated()">
+            <li><a href="/jobs/add">Add Job</a></li>
+        </div>
     </ul>
 </nav>
 <table>
     <tr>
-        <th></th>
         <th>Job Title</th>
         <th>Job Description</th>
         <th>Number of People to Hire</th>
         <th>Last Application Date</th>
     </tr>
     <tr th:each="job : ${jobs}">
-        <td>
-            <form th:action="@{/jobs/} + ${job.id}" th:method="delete">
-                <button type="submit">Delete</button>
-            </form>
-        </td>
+
         <td th:text="${job.title}">Job title </td>
         <td th:text="${job.description}">Job description </td>
         <td th:text="${job.numbHirePeople}">Number of people to hire </td>
         <td th:text="${job.lastAppDate}">Last application date </td>
         <td>
+            <div sec:authorize="isAnonymous()">
             <form th:action="@{/jobs/}+${job.id}+@{/app}">
                 <button type="submit">Apply</button>
             </form>
+            </div>
         </td>
+        <div sec:authorize="isAuthenticated()">
         <td>
+
             <form th:action="@{/jobs/}+${job.id}+@{/getApps}">
-                <button type="submit">getir</button>
-            </form>
-        </td>
+                    <button type="submit">getir</button>
+                </form>
+
+        </td></div>
+        <div sec:authorize="isAuthenticated()">
+            <td>
+                <form th:action="@{/jobs/} + ${job.id}" th:method="delete">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </div>
+
     </tr>
 </table>
 </body>

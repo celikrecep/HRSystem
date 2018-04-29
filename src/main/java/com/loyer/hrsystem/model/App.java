@@ -25,9 +25,9 @@ public class App {
     @Column(name = "email", nullable = false)
     private String eMail;
 
-    @NotEmpty
+    @NotNull
     @Column(name = "phoneNumber", nullable = false)
-    private String  phoneNumber;
+    private long  phoneNumber;
 
     @NotEmpty
     @Column(name = "address", nullable = false)
@@ -45,7 +45,7 @@ public class App {
     public App() {
 
     }
-    public App(String name, String eMail, String phoneNumber, String address, String thoughtsOnJob) {
+    public App(String name, String eMail, long phoneNumber, String address, String thoughtsOnJob) {
         this.name = name;
         this.eMail = eMail;
         this.phoneNumber = phoneNumber;
@@ -74,11 +74,11 @@ public class App {
         this.eMail = eMail;
     }
 
-    public String getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

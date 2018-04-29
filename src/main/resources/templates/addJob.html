@@ -3,6 +3,38 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <title>Add Job</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+    <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+    <script>
+        $(document).ready(function(){
+            var date_input=$('input[name="date"]'); //our date input has the name "date"
+            var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+            var options={
+                format: 'mm/dd/yyyy',
+                container: container,
+                todayHighlight: true,
+                autoclose: true,
+            };
+            date_input.datepicker(options);
+            $("#add").click(function () {
+                var x = $("#date").val();
+                $("#date1").val(x);
+            })
+        })
+        window.onload = function () {
+            $("#date1").hide(10);
+
+        }
+    </script>
+
 </head>
 <body>
 <nav role="navigation">
@@ -16,26 +48,27 @@
     <table>
         <tr>
             <td>Job Title:</td>
-            <td><input type="text"  th:field="*{jobTitle}" /></td>
+            <td><input type="text"  th:field="*{jobTitle}" placeholder="Job title" /></td>
             <td th:if="${#fields.hasErrors('jobTitle')}" th:errors="*{jobTitle}">Job Title Error </td>
         </tr>
         <tr>
             <td>Job Description:</td>
-            <td><textarea th:rows="4" th:cols="50" th:field="*{description}" /></td>
+            <td><textarea th:rows="4" th:cols="50" th:field="*{description}" placeholder="Job Description"/></td>
             <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Job Description Error </td>
         </tr>
         <tr>
             <td>Number People of Hire:</td>
-            <td><input type="text" th:field="*{numbHirePeople}" /></td>
-            <td th:if="${#fields.hasErrors('numbHirePeople')}" th:errors="*{numbHirePeople}">Number of People to Hire Error w</td>
+            <td><input type="number" th:field="*{numbHirePeople}" placeholder="Number of People to Hire"/></td>
+            <td th:if="${#fields.hasErrors('numbHirePeople')}" th:errors="*{numbHirePeople}">Number of People to Hire Error </td>
         </tr>
         <tr>
             <td>Last Application Date:</td>
-            <td><input type="text" th:field="*{lastAppDate}" /></td>
+            <td> <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" /></td>
+            <td> <input type="date" id="date1" th:field="*{lastAppDate}" /></td>
             <td th:if="${#fields.hasErrors('lastAppDate')}" th:errors="*{lastAppDate}">Last Application Date Error </td>
         </tr>
         <tr>
-            <td><button type="submit">Add</button></td>
+            <td><button id="add" type="submit">Add</button></td>
         </tr>
     </table>
 </form>

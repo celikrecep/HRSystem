@@ -8,27 +8,23 @@
 <nav role="navigation">
     <ul>
         <li><a href="/">Home</a></li>
+        <li><a href="/jobs/">Jobs</a></li>
     </ul>
 </nav>
 <table>
+
     <tr>
-        <th></th>
         <th>Job Title</th>
         <th>Job Description</th>
         <th>Number of People to Hire</th>
         <th>Last Application Date</th>
     </tr>
     <tr th:each="job : ${jobs}">
-        <td>
 
-        </td>
         <td th:text="${job.title}">Job title </td>
         <td th:text="${job.description}">Job description </td>
         <td th:text="${job.numbHirePeople}">Number of people to hire </td>
         <td th:text="${job.lastAppDate}">Last application date </td>
-        <td>
-
-        </td>
     </tr>
 </table>
 <form th:action="@{/apps}" th:object="${appForm}" th:method="post">
@@ -36,28 +32,28 @@
 
         <tr>
             <td>Name:</td>
-            <td><input type="text" th:field="*{name}" /></td>
-            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Item Type Error </td>
+            <td><input type="text" th:field="*{name}" placeholder="name"/></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error </td>
         </tr>
         <tr>
             <td>e-Mail:</td>
-            <td><input type="text" th:field="*{eMail}" /></td>
+            <td><input type="email" th:field="*{eMail}" placeholder="example@example.com" /></td>
             <td th:if="${#fields.hasErrors('eMail')}" th:errors="*{eMail}">Email Error </td>
         </tr>
         <tr>
             <td>Phone Number:</td>
-            <td><input type="text" th:field="*{phoneNumber}" /></td>
+            <td><input type="tel" th:field="*{phoneNumber}" placeholder="123456789" /></td>
             <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Phone Number Error </td>
         </tr>
         <tr>
         <tr>
             <td>Address:</td>
-            <td><textarea th:rows="4" th:cols="50" th:field="*{address}" /></td>
+            <td><textarea th:rows="4" th:cols="50" th:field="*{address}" placeholder="address"/></td>
             <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error </td>
         </tr>
         <tr>
             <td>Thoughts on Job:</td>
-            <td><textarea th:rows="4" th:cols="50"  th:field="*{thoughtsJob}" /></td>
+            <td><textarea th:rows="4" th:cols="50"  th:field="*{thoughtsJob}" placeholder="Thoughts on Job" /></td>
             <td th:if="${#fields.hasErrors('thoughtsJob')}" th:errors="*{thoughtsJob}">Thoughts on Job Error </td>
         </tr>
             <td><button type="submit">Send</button></td>
