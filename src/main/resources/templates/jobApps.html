@@ -3,34 +3,56 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <title>Jobs</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
 </head>
-<body>
-<nav role="navigation">
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/jobs/">Jobs</a> </li>
-    </ul>
-</nav>
+<body style="background-color: #2c3e50">
+<div class="container">
+    <div class="row" style="padding-top: 10px;">
+        <div class="col-md-12 col-sm-12">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #ecf0f1 !important;">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/jobs/"><i class="fas fa-archive"></i> Jobs</a>
+                        </li>
 
-<div th:each="entry : ${jobs}" th:with="appList=${entry.value}">
-
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>eMail</th>
-            <th>Phone Number</th>
-            <th>Address</th>
-            <th>Thoughts on Job</th>
-
-        </tr>
-        <tr th:each="app : ${appList}">
-            <td th:text="${app.name}">name</td>
-            <td th:text="${app.eMail}">email</td>
-            <td th:text="${app.phoneNumber}">phone number</td>
-            <td th:text="${app.address}">address</td>
-            <td th:text="${app.thoughtsOnJob}">thoughts on job</td>
-        </tr>
-    </table>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
 </div>
+
+<div class="container">
+    <div style="margin-top:10px;">
+        <div th:each="entry : ${jobs}" th:with="appList=${entry.value}">
+            <table class="table table-striped" style="background-color: #ecf0f1;">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">e-Mail</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Thoughts on Job</th>
+
+
+                </tr>
+                <tr th:each="app : ${appList}">
+                    <td th:text="${app.name}">name</td>
+                    <td th:text="${app.eMail}">email</td>
+                    <td th:text="${app.phoneNumber}">phone number</td>
+                    <td th:text="${app.address}">address</td>
+                    <td th:text="${app.thoughtsOnJob}">thoughts on job</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
 </body>
 </html>
