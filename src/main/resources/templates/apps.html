@@ -46,7 +46,11 @@
             <td th:text="${app.address}">address</td>
             <td th:text="${app.thoughtsOnJob}">thoughts on job</td>
             <td th:text="${app.job.getTitle()}">job title</td>
-
+            <td>
+                <form th:action="@{/allapps/}+${app.id}+@{/app}" sec:authorize="isAuthenticated()">
+                    <button type="submit" class="btn btn-success">Details</button>
+                </form>
+            </td>
         </tr>
     </table>
 </div>

@@ -50,9 +50,9 @@
 </div>
 <div class="container">
     <div style="margin-top: 10px;">
-        <div class="mx-auto" style="width: 400px; text-align: center">
-            <div class="card bg-light mb-3" style="max-width: 20rem;">
-                <div class="card-header"><b>Application</b></div>
+        <div class="mx-auto" style="width: 800px; text-align: center">
+            <div class="card bg-light mb-3" style="max-width: 60rem;">
+                <div class="card-header"><b>Application Form</b></div>
                 <div class="card-body">
                     <form th:action="@{/apps}" th:object="${appForm}" method="post">
                         <div class="form-group">
@@ -72,12 +72,12 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleAmount">Address:</label>
-                            <input th:field="*{address}" type="text" name="username" class="form-control" id="exampleAmount" aria-describedby="emailHelp" placeholder="Enter address"/>
+                            <textarea name="Text1" cols="75" rows="5" th:field="*{address}" placeholder="Enter description"></textarea>
                             <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}"> Address Error</p>
                         </div>
                         <div class="form-group">
                             <label for="exampleAmount">Thoughts on Job:</label>
-                            <input th:field="*{thoughtsJob}" type="text" name="username" class="form-control" id="exampleAmount" aria-describedby="emailHelp" placeholder="Enter Thoughts on Job"/>
+                            <textarea name="Text1" cols="75" rows="5" th:field="*{thoughtsJob}" placeholder="Enter description"></textarea>
                             <p th:if="${#fields.hasErrors('thoughtsJob')}" th:errors="*{thoughtsJob}"> Thoughts on Job Error</p>
                         </div>
                         <button type="submit" id="add" class="btn btn-success btn-lg">Add</button>

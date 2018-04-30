@@ -9,4 +9,5 @@ public interface AppService {
     void addApp(AppAddForm form);
     App applyApp(long jobId, AppAddForm form);
     Iterable<App> getApps();
+    App getApById(long id);
 }

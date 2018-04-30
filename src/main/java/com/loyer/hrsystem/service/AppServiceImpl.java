@@ -61,4 +61,9 @@ public class AppServiceImpl implements AppService {
     public Iterable<App> getApps() {
         return appRepository.findAll();
     }
+
+    @Override
+    public App getApById(long id) {
+        return appRepository.findOne(id);
+    }
 }

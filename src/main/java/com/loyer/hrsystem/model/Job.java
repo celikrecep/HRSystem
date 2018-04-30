@@ -31,8 +31,9 @@ public class Job {
     @NotEmpty
     @Column(name = "appDate", nullable = false)
     private String lastAppDate;
-
-    @OneToMany(mappedBy = "job")
+    // CascadeType nesneler arasındaki persist operasyonların birlikte davranışlarını belirler.
+    // forein key ile bağladığımız tüm nesneleri silicez
+    @OneToMany(mappedBy = "job",cascade = CascadeType.REMOVE)
     private Set<App> apps;
 
 

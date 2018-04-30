@@ -20,11 +20,10 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    //jobs ve başvuru sayfası dışındaki heryeri giriş yapmamış kapadık
+    //jobs ve başvuru sayfası dışındaki heryeri giriş yapmamış kullanıcılara kapadık
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                //.antMatchers("/jobs/create").authenticated()
                 .antMatchers("/jobs/").permitAll()
                 .antMatchers("/").permitAll()
                 .antMatchers("/jobs/{id}/app").permitAll()

@@ -55,6 +55,12 @@ public class AppController {
         return new ModelAndView("addApp", map);
     }
 
+    //idye göre başvuru detay sayfasını açar
+    @RequestMapping("/allapps/{id}/app")
+    public ModelAndView getAppDetailsPage(@PathVariable Long id) {
+        return new ModelAndView("appDetails","apps",appService.getApById(id));
+    }
+
     private Job getJob(long id){
         this.job = jobRepository.findOne(id);
         return job;
