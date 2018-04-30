@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @Controller
 public class LoginController {
+
     @PreAuthorize("isAnonymous()")
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView getLoginPage(@RequestParam Optional<String> error) {

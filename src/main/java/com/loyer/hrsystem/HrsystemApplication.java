@@ -35,15 +35,35 @@ public class HrsystemApplication implements CommandLineRunner{
 		user1.setLastName("çelik");
 
 		userRepository.save(user1);
+
 		Job job = new Job("Yazılım Stajyeri","Tercihen Java bilen",2,"01/05/2018");
+		Job job1 = new Job("Çaycı","Çay getirip götüren",1,"02/05/2018");
 
-		App app = new App("recep","recep@gmail.com",111111111,"izmir","elimden geldiğince, öğrenmeye hevesli");
-		Set set = new HashSet<App>();
-
-		set.add(app);
-		app.setJob(job);
 		jobRepository.save(job);
+		jobRepository.save(job1);
+
+
+		App app = new App("Recep","recep@gmail.com",111111111,"izmir","elimden geldiğince, öğrenmeye hevesli");
+		App app1 = new App("Ahmet","ahmet@gmail.com",22222222,"Bolu","iş hakkındaki düşünceler");
+
+		App app2 = new App("Hüseyin","hüseyin@gmail.com",33333333,"istanbul","Tepsiyi sallayabiliyorum");
+
+		Set set1 = new HashSet<App>();
+		set1.add(app2);
+
+		app2.setJob(job1);
+
+		Set set = new HashSet<App>();
+		set.add(app);
+		set.add(app1);
+
+		app.setJob(job);
+		app1.setJob(job);
+
+
 		appRepository.save(app);
+		appRepository.save(app1);
+		appRepository.save(app2);
 
 
 	}

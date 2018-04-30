@@ -72,12 +72,12 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleAmount">Address:</label>
-                            <textarea name="Text1" cols="75" rows="5" th:field="*{address}" placeholder="Enter description"></textarea>
+                            <textarea name="Text1" cols="75" rows="5" th:field="*{address}" placeholder="Enter Address"></textarea>
                             <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}"> Address Error</p>
                         </div>
                         <div class="form-group">
                             <label for="exampleAmount">Thoughts on Job:</label>
-                            <textarea name="Text1" cols="75" rows="5" th:field="*{thoughtsJob}" placeholder="Enter description"></textarea>
+                            <textarea name="Text1" cols="75" rows="5" th:field="*{thoughtsJob}" placeholder="Enter Thoughts on Job"></textarea>
                             <p th:if="${#fields.hasErrors('thoughtsJob')}" th:errors="*{thoughtsJob}"> Thoughts on Job Error</p>
                         </div>
                         <button type="submit" id="add" class="btn btn-success btn-lg">Add</button>

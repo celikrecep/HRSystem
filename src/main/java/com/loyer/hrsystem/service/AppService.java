@@ -7,7 +7,7 @@ import com.loyer.hrsystem.model.AppAddForm;
 
 public interface AppService {
     void addApp(AppAddForm form);
-    App applyApp(long jobId, AppAddForm form);
+    App applyApp(long jobId);
     Iterable<App> getApps();
     App getApById(long id);
 }

@@ -3,6 +3,7 @@ package com.loyer.hrsystem.controller;
 
 import com.loyer.hrsystem.model.JobAddForm;
 import com.loyer.hrsystem.repository.UserRepository;
+import com.loyer.hrsystem.service.AppService;
 import com.loyer.hrsystem.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,12 +22,14 @@ public class JobController {
 
     private final JobService jobService;
     private final UserRepository userRepository;
+    private final AppService appService;
 
     @Autowired
-    public JobController(JobService jobService, UserRepository userRepository) {
+    public JobController(JobService jobService, UserRepository userRepository, AppService appService) {
 
         this.userRepository = userRepository;
         this.jobService = jobService;
+        this.appService = appService;
     }
 
     //addJob sayfasında kullanacağımız modelimizin ismi jobFrom
@@ -70,6 +73,11 @@ public class JobController {
         else
             return new ModelAndView("jobApps","jobs",jobService.getAppsById(id));
    }
+    //job nesnesine ait başvurulardan da başvuru detayını görebilmek için
+    @RequestMapping("/jobs/{id}/getApps/{id}/apps")
+    public ModelAndView getAppDetailsOnJobPage(@PathVariable Long id) {
+        return new ModelAndView("appDetails","apps",appService.getApById(id));
+    }
 
 
 }

@@ -20,6 +20,7 @@ import javax.validation.Valid;
 
 @Controller
 public class AppController {
+
     private final AppService appService;
     private final JobService jobService;
     private final JobRepository jobRepository;
@@ -39,7 +40,7 @@ public class AppController {
             return "addApp";
 
         appService.addApp(appAddForm);
-        appService.applyApp(job.getId(), appAddForm);
+        appService.applyApp(job.getId());
 
 
         return "redirect:/jobs/";
@@ -47,7 +48,7 @@ public class AppController {
     //addApp viewına birden fazla model göndermek için map kullandık.
     //parametre olarakta id alıp ilgili job nesnesinin detaylarını çekicez.
     @RequestMapping("/jobs/{id}/app")
-    public ModelAndView getDetails(@PathVariable Long id, ModelMap map){
+    public ModelAndView getDetailsOnAppFormPage(@PathVariable Long id, ModelMap map){
 
         map.addAttribute("jobs", jobService.getJobDetailsById(id));
         map.addAttribute("appForm", new AppAddForm());
@@ -61,10 +62,7 @@ public class AppController {
         return new ModelAndView("appDetails","apps",appService.getApById(id));
     }
 
-    private Job getJob(long id){
-        this.job = jobRepository.findOne(id);
-        return job;
-    }
+
     //tüm başvurular
         @RequestMapping("/allapps")
     public ModelAndView getAllAppsPage(){
@@ -72,5 +70,9 @@ public class AppController {
         }
 
 
+    private Job getJob(long id){
+        this.job = jobRepository.findOne(id);
+        return job;
+    }
 
 }
